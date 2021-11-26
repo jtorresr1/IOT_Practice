@@ -1,0 +1,115 @@
+[
+    {
+        "id": "f6f2187d.f17ca8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "0d73bf5c25c0c582",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "84523e74ef4b88f4",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "listen everything",
+        "topic": "local",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "c1e4fd583723331d",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 280,
+        "wires": [
+            [
+                "32156178bda70e36"
+            ]
+        ]
+    },
+    {
+        "id": "32156178bda70e36",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "create query",
+        "func": "// get microtime\nvar timestamp = new Date().getTime()/1000;\n// pad it with trailing zeroes\ntimestamp = timestamp.toString() + \"000\";\n// trim to exact length 10 + 1 + 3\ntimestamp = timestamp.substring(0, 14);\nvar strQuery = \"INSERT INTO thingData (topic, payload, timestamp, deleted) VALUES ('\" + escape(msg.topic) + \"','\" + escape(msg.payload) + \"','\" + timestamp + \"', 0);\";\nmsg.topic = strQuery;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 280,
+        "wires": [
+            [
+                "38bee90a04dc7659"
+            ]
+        ]
+    },
+    {
+        "id": "38bee90a04dc7659",
+        "type": "mysql",
+        "z": "f6f2187d.f17ca8",
+        "mydb": "e3e24f894c07d7f9",
+        "name": "",
+        "x": 540,
+        "y": 280,
+        "wires": [
+            [
+                "0d73bf5c25c0c582"
+            ]
+        ]
+    },
+    {
+        "id": "c1e4fd583723331d",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "iot_proyect_mosquitto_1",
+        "port": "1883",
+        "clientid": "node-red",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "e3e24f894c07d7f9",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "iot_proyect_mysql_1",
+        "port": "3306",
+        "db": "tSeriesDB",
+        "tz": "",
+        "charset": "UTF8"
+    }
+]

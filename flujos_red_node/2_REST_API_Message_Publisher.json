@@ -1,0 +1,120 @@
+[
+    {
+        "id": "f6f2187d.f17ca8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "b2acf8a52d3cfc6a",
+        "type": "mqtt out",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "topic",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "c1e4fd583723331d",
+        "x": 630,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "b88d7c406b8a7539",
+        "type": "http in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "url": "/pub/:topic/:payload",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 170,
+        "y": 260,
+        "wires": [
+            [
+                "c6194b2f1dc3a73c"
+            ]
+        ]
+    },
+    {
+        "id": "4a3c38977fa89bc0",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "create response",
+        "func": "msg.payload = {\n    success: true,\n    message: \"published \" +\n    msg.req.params.topic +\n    \"/\" +\n    msg.req.params.payload\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 280,
+        "wires": [
+            [
+                "4aca0323485d7d78"
+            ]
+        ]
+    },
+    {
+        "id": "c6194b2f1dc3a73c",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "create message",
+        "func": "msg.topic = msg.req.params.topic;\nmsg.payload = msg.req.params.payload;\nmsg.qos = 2;\nmsg.retain = false;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 260,
+        "wires": [
+            [
+                "4a3c38977fa89bc0",
+                "b2acf8a52d3cfc6a"
+            ]
+        ]
+    },
+    {
+        "id": "4aca0323485d7d78",
+        "type": "http response",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 850,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "c1e4fd583723331d",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "iot_proyect_mosquitto_1",
+        "port": "1883",
+        "clientid": "node-red",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    }
+]

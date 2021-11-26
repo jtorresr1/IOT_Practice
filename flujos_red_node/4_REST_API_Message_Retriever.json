@@ -1,0 +1,116 @@
+[
+    {
+        "id": "f6f2187d.f17ca8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "32156178bda70e36",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "create query",
+        "func": "// if required record count is not specified\n// set default to 1\nif(!msg.req.params.count)\n    msg.req.params.count = 1;\n// build the sql query\nmsg.topic = \"SELECT id,topic,payload,timestamp \" +\n            \"FROM thingData \" +\n            \"WHERE topic='\" + escape(msg.req.params.topic) + \"' \" +\n            \"AND deleted=0 \" +\n            \"ORDER BY id DESC \" +\n            \"LIMIT \" + msg.req.params.count + \";\"+\"\\n\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 280,
+        "wires": [
+            [
+                "38bee90a04dc7659"
+            ]
+        ]
+    },
+    {
+        "id": "38bee90a04dc7659",
+        "type": "mysql",
+        "z": "f6f2187d.f17ca8",
+        "mydb": "e3e24f894c07d7f9",
+        "name": "",
+        "x": 540,
+        "y": 280,
+        "wires": [
+            [
+                "c01de2eaf93d4c73"
+            ]
+        ]
+    },
+    {
+        "id": "ecaef901a86cb92d",
+        "type": "http in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "url": "/get/:topic",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 200,
+        "wires": [
+            [
+                "32156178bda70e36"
+            ]
+        ]
+    },
+    {
+        "id": "209cd7381fcb6911",
+        "type": "http in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "url": "/get/:topic/last/:count",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 340,
+        "wires": [
+            [
+                "32156178bda70e36"
+            ]
+        ]
+    },
+    {
+        "id": "c01de2eaf93d4c73",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "prepare response",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 280,
+        "wires": [
+            [
+                "6b69417eefdcf7ce"
+            ]
+        ]
+    },
+    {
+        "id": "6b69417eefdcf7ce",
+        "type": "http response",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 910,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "e3e24f894c07d7f9",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "iot_proyect_mysql_1",
+        "port": "3306",
+        "db": "tSeriesDB",
+        "tz": "",
+        "charset": "UTF8"
+    }
+]
