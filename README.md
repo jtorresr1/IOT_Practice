@@ -1,5 +1,5 @@
-# IOT_Practice
-\begin{itemize}
-  \item prueba
-\end{itemize}
+# Practica de Internet de las Cosas
+```bash
 docker-compose up
+```
+
