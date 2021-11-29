@@ -41,9 +41,8 @@ La instalación predeterminada de Node-RED no tiene un nodo para acceder a MySQL
 3. Abré la **User Settings** y se escribe **MySQL** para enumerar los nodos disponibles. 
 4. Selecciona e instala *node-red-node-MySQL*.
 
-
-
 ## Importación de Flujos
+Los flujos se encuentran en  formato JSON, en la carpeta [flujos_red_node](flujos_red_node).
 
 ## Integrantes
 
