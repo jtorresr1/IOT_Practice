@@ -34,10 +34,10 @@ En el siguiente [enlace](https://help.wnpower.com/hc/es/articles/360043459551-Im
 
 La instalación predeterminada de Node-RED no tiene un nodo para acceder a MySQL. Por lo tanto, se agrega este nodo usando el administrador de paleta.
 
-1. Abré la interfaz Node-RED en el navegador
-2. Selecciona la opción Administrar paleta en el menú en la parte superior derecha. 
-3. Abré la Configuración de usuario y se escribe MySQL para enumerar los nodos disponibles. 
-4. Selecciona e instala node-red-node-MySQL.
+1. Abré la interfaz **Node-RED** en el navegador
+2. Selecciona la opción **Administrar paleta** en el menú en la parte superior derecha. 
+3. Abré la **Configuración de usuario** y se escribe **MySQL** para enumerar los nodos disponibles. 
+4. Selecciona e instala *node-red-node-MySQL*.
 
 
 
