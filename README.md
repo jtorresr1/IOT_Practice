@@ -45,6 +45,9 @@ La instalación predeterminada de Node-RED no tiene un nodo para acceder a MySQL
 Los flujos se encuentran en  formato JSON, en la carpeta [flujos_red_node](flujos_red_node).
 Para la importación solo se hace click en el icono de opciones(esquina superior derecha), luego en **import**. Seguido se agrega los archivos JSON de la carpeta.
 
+## Testing
+
+
 ## Integrantes
 
 - Céspedes Fuentes, Renato
