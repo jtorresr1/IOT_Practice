@@ -30,6 +30,8 @@ Ya teniendo la Base de Datos, lo siguiente es la importación para ello se sigue
 
 En el siguiente [enlace](https://help.wnpower.com/hc/es/articles/360043459551-Importar-tu-base-de-datos-MySQL-desde-un-archivo-SQL-en-phpMyAdmin) se encuentra este proceso con imagenes de referencia.
 
+Además para acceder a la base de datos de series de tiempo, se crea un usuario especial y le asignamos una contraseña.
+
 ## Instalación de nodos requeridos en Node-RED
 
 La instalación predeterminada de Node-RED no tiene un nodo para acceder a MySQL. Por lo tanto, se agrega este nodo usando el administrador de paleta.
