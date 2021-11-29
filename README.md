@@ -5,7 +5,7 @@ En este proyecto se instalará y configurará lo propuesto en el Capítulo 7 *Bu
 
 ## Instalación
 
-Para la instalación de servicios se creó un archivo [docker](docker-compose.yml), donde contiene:
+Los servicios a utilizarse se configurarón en un archivo [docker](docker-compose.yml), donde contiene:
 
 | SERVICIO| VERSIÓN|
 | ----- | ---- |
@@ -14,10 +14,12 @@ Para la instalación de servicios se creó un archivo [docker](docker-compose.ym
 | mysql| latest|
 | phpmyadmin| latest|
 
-
+Luego se ejecuta el siguiente comando para la instalación de los servicios:
 ```bash
 docker-compose up
 ```
+
+
 
 
 
