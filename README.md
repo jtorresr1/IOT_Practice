@@ -20,7 +20,7 @@ docker-compose up
 ```
 
 ## Importación de la Base de datos
-Antes de realizar la importación del [archivo](tSeriesDB.sql), lo primero es la creación de la base de datos en phpmyadmin. para ello se ingresa al enlace http://localhost:8080/phpmyadmin/, seguido se hace click en la pestaña de **Bases de datos**. Lo último es colocarle el nombre de **tseries**, seleccionar la codificación de **utf8_general_ci** y click en **Crear**.
+Antes de realizar la importación del [archivo](base_de_datos/tSeriesDB.sql), lo primero es la creación de la base de datos en phpmyadmin. para ello se ingresa al enlace http://localhost:8080/phpmyadmin/, seguido se hace click en la pestaña de **Bases de datos**. Lo último es colocarle el nombre de **tseries**, seleccionar la codificación de **utf8_general_ci** y click en **Crear**.
 
 
 ## Importación de Flujos
