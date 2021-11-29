@@ -52,7 +52,7 @@ curl -X POST "localhost:1880/pub/myTopic/myPayload" -i
 ```
 
 ```bash
-curl -X GET "localhost:1880/pub/myTopic/myPayload" -i
+curl -X GET "localhost:1880/get/myTopic" -i
 ```
 
 
