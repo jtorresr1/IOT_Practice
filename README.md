@@ -46,6 +46,14 @@ Los flujos se encuentran en  formato JSON, en la carpeta [flujos_red_node](flujo
 Para la importación solo se hace click en el icono de opciones(esquina superior derecha), luego en **import**. Seguido se agrega los archivos JSON de la carpeta.
 
 ## Testing
+Para la prueba de los flujos importados se hace uso de los siguientes comandos:
+```bash
+curl -X POST "localhost:1880/pub/myTopic/myPayload" -i
+```
+
+```bash
+curl -X GET "localhost:1880/pub/myTopic/myPayload" -i
+```
 
 
 ## Integrantes
