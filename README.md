@@ -63,21 +63,22 @@ Para la importación solo se hace click en el icono de opciones(esquina superior
   ```bash
     mosquitto_pub -h localhost -t topicoRedNode -m "Hola Mundo"
   ```
+  Insertando el mensaje junto con el tópico en la base de datos.
 
 * Para las prueba de [4_REST_API_Message_Retriever.json](flujos_red_node/4_REST_API_Message_Retriever.json) se usa los siguiente comando:
 
-    1. Se usa para la extracción del ultimo elemento insertado en la base de datos dependiendo del topico solicitado.
+    1. Se usa para la extracción del ultimo elemento insertado en la base de datos dependiendo del tópico solicitado.
 
     ```bash
-      curl -X GET "localhost:1880/get/myTopic" -i   #extrae el ultimo elemento insertado del topico mytopic
+      curl -X GET "localhost:1880/get/myTopic" -i   #extrae el ultimo elemento insertado del tópico mytopic
     ```
 
     Oteniendo ```[{"id":8,"topic":"myTopic","payload":"myPayload","timestamp":"1543717154.899"}]```
 
-    2. Se usa para la extracción de 1 o mas elementos insertados en la base de datos dependiendo del topico solicitado.
+    2. Se usa para la extracción de 1 o mas elementos insertados en la base de datos dependiendo del tópico solicitado.
 
     ```bash
-      curl -X GET "https://www.in24hrs.xyz:1880/get/myTopic/last/3"  #extrae los 3 ultimos elementos insertados del topico mytopic
+      curl -X GET "https://www.in24hrs.xyz:1880/get/myTopic/last/3"  #extrae los 3 ultimos elementos insertados del tópico mytopic
     ```
     Obteniendo ```[{"id":8,"topic":"myTopic","payload":"myPayload", "timestamp":"1543717154.899"}, {"id":7,"topic":"myTopic","payload":"myPayload",
     "timestamp":"1543716966.189"}, {"id":6,"topic":"myTopic","payload":"myPayload", "timestamp":"1543717132.192"}] ```
