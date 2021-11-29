@@ -37,7 +37,7 @@ La instalación predeterminada de Node-RED no tiene un nodo para acceder a MySQL
 1. Abré la interfaz Node-RED en el navegador
 2. Selecciona la opción Administrar paleta en el menú en la parte superior derecha. 
 3. Abré la Configuración de usuario y se escribe MySQL para enumerar los nodos disponibles. 
-4. Selecciona e instala node-red-node-MySQL siguiendo las instrucciones siguientes.
+4. Selecciona e instala node-red-node-MySQL.
 
 
 
