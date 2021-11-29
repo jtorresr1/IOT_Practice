@@ -5,7 +5,11 @@ En este proyecto se instalará y configurará lo propuesto en el Capítulo 7 *Bu
 
 ## Instalación
 
+Para la instalación de componentes se creó un archivo [docker](docker-compose.yml) 
+
 ```bash
 docker-compose up
 ```
+
+
 
