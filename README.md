@@ -23,5 +23,10 @@ docker-compose up
 
 ## Importación de Flujos
 
+## Integrantes
 
+- Céspedes Fuentes, Renato
+- Hermoza Loayza, Miguel
+- Torres Rodríguez, Jaime
+- Vicente Castro, Renzo
 
