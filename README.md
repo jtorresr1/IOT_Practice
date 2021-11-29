@@ -47,20 +47,31 @@ Los flujos se encuentran en  formato JSON, en la carpeta [flujos_red_node](flujo
 Para la importación solo se hace click en el icono de opciones(esquina superior derecha), luego en **import**. Seguido se agrega el archivo json a importar y se hace selección de nuevo diagrama. Este proceso se repite para los demas archivos json.
 
 ## Testing
-Para la prueba de [2_REST_API_Message_Publisher.json](flujos_red_node/2_REST_API_Message_Publisher.json) se usa el siguiente comando:
+Para la prueba de [2_REST_API_Message_Publisher.json](flujos_red_node/2_REST_API_Message_Publisher.json) se usa la siguiente estructura de comando:
 ```bash
-curl -X POST "localhost:1880/pub/myTopic/myPayload" -i
+curl -X POST "localhost:1880/pub/'nombre_del_topico'/'nombre_del_metodo_payload'" -i
 ```
-
-Para la prueba de [4_REST_API_Message_Retriever.json](flujos_red_node/4_REST_API_Message_Retriever.json) se usa los siguiente comando:
+El cual retorna un mensaje de la siguiente forma:
+```bash
+{"success":true,"message":"published myTopic/myPayload"}
+```
+Para las prueba de [4_REST_API_Message_Retriever.json](flujos_red_node/4_REST_API_Message_Retriever.json) se usa los siguiente comando:
 1. Se usa para la extracción del ultimo elemento insertado en la base de datos dependiendo del topico solicitado.
 ```bash
-curl -X GET "localhost:1880/get/myTopic" -i   #extrae el ultimo elemento insertado de mytopic
+curl -X GET "localhost:1880/get/myTopic" -i   #extrae el ultimo elemento insertado del topico mytopic
 ```
+Oteniendo ```[{"id":8,"topic":"myTopic","payload":"myPayload","timesta
+mp":"1543717154.899"}]```
 2. Se usa para la extracción de 1 o mas elementos insertados en la base de datos dependiendo del topico solicitado.
 ```bash
 curl -X GET "https://www.in24hrs.xyz:1880/get/myTopic/last/3"  #extrae los 3 ultimos elementos insertados del topico mytopic
 ```
+Obteniendo ```[{"id":8,"topic":"myTopic","payload":"myPayload",
+"timestamp":"1543717154.899"},
+{"id":7,"topic":"myTopic","payload":"myPayload",
+"timestamp":"1543716966.189"},
+{"id":6,"topic":"myTopic","payload":"myPayload",
+"timestamp":"1543717132.192"}] ```
 
 ## Integrantes
 
