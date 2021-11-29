@@ -14,15 +14,15 @@ Los servicios a utilizarse se configurarón en un archivo [docker](docker-compos
 | mysql| latest|
 | phpmyadmin| latest|
 
-Luego se ejecuta el siguiente comando para la instalación de los servicios:
+Luego se ejecuta el siguiente comando para la instalación y el levantamiento de los servicios:
 ```bash
 docker-compose up
 ```
 
 ## Importación de la Base de datos
-Antes de realizar la importación del [archivo](base_de_datos/tSeriesDB.sql), lo primero es la creación de la base de datos en phpmyadmin. para ello se ingresa al enlace http://localhost:8080/phpmyadmin/, seguido se hace click en la pestaña de **Bases de datos**. Lo último es colocarle el nombre de **tSeriesDB**, seleccionar la codificación de **utf8_general_ci** y click en **Crear**.
+Se realiza la importación del [archivo](base_de_datos/tSeriesDB.sql), el cual contiene la base de datos. Pero antes se explicara su creación, lo primero es la creación de la base de datos en phpmyadmin. para ello se ingresa al enlace http://localhost:8080/phpmyadmin/, seguido se hace click en la pestaña de **Bases de datos**. Lo último es colocarle el nombre de **tSeriesDB**, seleccionar la codificación de **utf8_general_ci** y click en **Crear**. Después se procede a crear la tabla que tendra el nombre de thingData, la cual es usada en este caso y tendra una cierta cantidad de columnas.
 
-Ya teniendo la Base de Datos, lo siguiente es la importación para ello se sigue el siguiente proceso:
+En el caso de la importación de la base de datos se procede a hacer lo siguientes pasos:
 1. Selecciona la base de datos **tSeriesDB** .
 2. Luego click en **Importar** se encuentra en la pestaña superior.
 3. Busca el archivo [tSeriesDB.sql](base_de_datos/tSeriesDB.sql).
@@ -30,7 +30,7 @@ Ya teniendo la Base de Datos, lo siguiente es la importación para ello se sigue
 
 En el siguiente [enlace](https://help.wnpower.com/hc/es/articles/360043459551-Importar-tu-base-de-datos-MySQL-desde-un-archivo-SQL-en-phpMyAdmin) se encuentra este proceso con imagenes de referencia.
 
-Además para acceder a la base de datos de series de tiempo, se crea un usuario especial y le asignamos una contraseña.
+Además para acceder a la base de datos de series de tiempo, se crea un usuario especial y se le asigno una contraseña.
 
 ## Instalación de nodos requeridos en Node-RED
 
