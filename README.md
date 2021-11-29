@@ -30,6 +30,17 @@ Ya teniendo la Base de Datos, lo siguiente es la importación para ello se sigue
 
 En el siguiente [enlace](https://help.wnpower.com/hc/es/articles/360043459551-Importar-tu-base-de-datos-MySQL-desde-un-archivo-SQL-en-phpMyAdmin) se encuentra este proceso con imagenes de referencia.
 
+## Instalación de nodos requeridos en Node-RED
+
+La instalación predeterminada de Node-RED no tiene un nodo para acceder a MySQL. Por lo tanto, se agrega este nodo usando el administrador de paleta.
+
+1. Abré la interfaz Node-RED en el navegador
+2. Selecciona la opción Administrar paleta en el menú en la parte superior derecha. 
+3. Abré la Configuración de usuario y se escribe MySQL para enumerar los nodos disponibles. 
+4. Selecciona e instala node-red-node-MySQL siguiendo las instrucciones siguientes.
+
+
+
 ## Importación de Flujos
 
 ## Integrantes
