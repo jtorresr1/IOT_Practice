@@ -1,5 +1,5 @@
 # Practica de Internet de las Cosas
-# Requerimientos
+## Requerimientos
 - Docker
 ```bash
 docker-compose up
