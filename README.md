@@ -36,14 +36,15 @@ Además para acceder a la base de datos de series de tiempo, se crea un usuario 
 
 La instalación predeterminada de Node-RED no tiene un nodo para acceder a MySQL. Por lo tanto, se agrega este nodo usando el administrador de paleta.
 
-1. Abré la interfaz **Node-RED** en el navegador
-2. Selecciona la opción **Manage Palette** en el menú en la parte superior derecha. 
-3. Abré la **User Settings** y se escribe **MySQL** para enumerar los nodos disponibles. 
-4. Selecciona e instala *node-red-node-MySQL*.
+1. Abré la interfaz **Node-RED** en el navegador.
+2. Abré la **User Settings**.
+3. Selecciona la opción **Manage Palette** en el menú que aparece. 
+4. Selecciona el apartado **Install** dentro de **Manage Palette** y se escribe **MySQL** para enumerar los nodos disponibles. 
+5. Selecciona e instala *node-red-node-MySQL*.
 
 ## Importación de Flujos
 Los flujos se encuentran en  formato JSON, en la carpeta [flujos_red_node](flujos_red_node).
-Para la importación solo se hace click en el icono de opciones(esquina superior derecha), luego en **import**. Seguido se agrega los archivos JSON de la carpeta.
+Para la importación solo se hace click en el icono de opciones(esquina superior derecha), luego en **import**. Seguido se agrega el archivo json a importar y se hace selección de nuevo diagrama. Este proceso se repite para los demas archivos json.
 
 ## Testing
 Para la prueba de los flujos importados se hace uso de los siguientes comandos:
