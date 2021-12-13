@@ -72,7 +72,7 @@ Para la importación solo se hace click en el icono de opciones(esquina superior
     - El segundo comando es para consultar por los últimos 5 registros que tengan un *timestamp* mayor a *1543717154.899*.
     - Por último, el tercer comando es para consultar por los últimos 5 registros que tengan un *timestamp* entre *1543717154.899* y *154371790*.
   
-   Un ejemplo de este comando con la [BD](base_de_datos/tSeriesDB.sql) sería:
+   Un ejemplo utilizado la [BD](base_de_datos/tSeriesDB.sql) sería:
   ```bash
   curl -X GET "http://127.0.0.1:1880/get/timestamp/before/1639354715/last/5"
   ```
@@ -94,12 +94,12 @@ Para la importación solo se hace click en el icono de opciones(esquina superior
     - El tercer comando es para cambiar el estado a *deleted = 1* de los últimos 5 registros del tópico indicado.
     - Por último, el cuarto comando es para cambiar el estado a *deleted = 1* de los primeros 5 registros del tópico indicado.
   
-   Un ejemplo de este comando con la [BD](base_de_datos/tSeriesDB.sql) sería:
+   Un ejemplo utilizado la [BD](base_de_datos/tSeriesDB.sql) sería:
   ```bash
-  curl -X GET "http://127.0.0.1:1880/get/timestamp/before/1639354715/last/5"
+  curl -X GET "http://127.0.0.1:1880/delete/timestamp/id/19"
   ```
   Devolviendo:
-  ```[{"id":22,"topic":"timestamp","payload":"1639353664853","timestamp":"1639353664.855"},{"id":21,"topic":"timestamp","payload":"1639353649841","timestamp":"1639353649.843"},{"id":20,"topic":"timestamp","payload":"1639353634841","timestamp":"1639353634.843"},{"id":19,"topic":"timestamp","payload":"1639353619829","timestamp":"1639353619.832"},{"id":18,"topic":"timestamp","payload":"1639353604821","timestamp":"1639353604.824"}]```
+  ```{"found":1,"changed":1}```
 
 * Para las prueba de [Removing_data_records.json](flows_Cap9/Removing_data_records.json) se usa los siguiente comando:
 
