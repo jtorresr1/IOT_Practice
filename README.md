@@ -100,6 +100,7 @@ Para la importación solo se hace click en el icono de opciones(esquina superior
   ```
   Devolviendo:
   ```{"found":1,"changed":1}```
+  Indicando que fue encontrado y modificado. Esto puede ser apreciado si se vuelve a consultar por la existencia de este registro (no aparecerá) mediante comandos curl, pero si se podrá visualizar el registro desde la [BD](base_de_datos/tSeriesDB.sql).
 
 * Para las prueba de [Removing_data_records.json](flows_Cap9/Removing_data_records.json) se usa los siguiente comando:
 
