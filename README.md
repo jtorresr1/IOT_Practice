@@ -79,10 +79,13 @@ Para la importación solo se hace click en el icono de opciones(esquina superior
   Devolviendo:
   ```[{"id":22,"topic":"timestamp","payload":"1639353664853","timestamp":"1639353664.855"},{"id":21,"topic":"timestamp","payload":"1639353649841","timestamp":"1639353649.843"},{"id":20,"topic":"timestamp","payload":"1639353634841","timestamp":"1639353634.843"},{"id":19,"topic":"timestamp","payload":"1639353619829","timestamp":"1639353619.832"},{"id":18,"topic":"timestamp","payload":"1639353604821","timestamp":"1639353604.824"}]```
 
-* Para la prueba de [Data_deletion_APIS.json](flows_Cap9/Data_deletion_APIS.json) se hace uso del siguiente comando de mosquitto:
+* Para la prueba de [Data_deletion_APIS.json](flows_Cap9/Data_deletion_APIS.json) se puede trabajar de cuatro maneras distintas:
 
   ```bash
-    mosquitto_pub -h localhost -t topicoRedNode -m "Hola Mundo"
+    curl -X GET "http://127.0.0.1:1880/delete/mytopic/id/22"
+    curl -X GET "http://127.0.0.1:1880/delete/mytopic"
+    curl -X GET "http://127.0.0.1:1880/delete/mytopic/last/5"
+    curl -X GET "http://127.0.0.1:1880/delete/mytopic/first/5"
   ```
   Insertando el mensaje junto con el tópico en la base de datos.
 
