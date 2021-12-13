@@ -1,0 +1,208 @@
+[
+    {
+        "id": "a074fd7bc25fbae4",
+        "type": "tab",
+        "label": "Data Deletion APIs",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b13893ef6e45a61a",
+        "type": "http in",
+        "z": "a074fd7bc25fbae4",
+        "name": "",
+        "url": "/delete/:topic/id/:id",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 260,
+        "y": 360,
+        "wires": [
+            [
+                "75baef783141fa15"
+            ]
+        ]
+    },
+    {
+        "id": "75baef783141fa15",
+        "type": "function",
+        "z": "a074fd7bc25fbae4",
+        "name": "delete_id",
+        "func": "// if no authentication filter defined or available\n// set the default value as 1\nif(!msg.req.authFilter)\n msg.req.authFilter = 1;\nmsg.topic = \"UPDATE thingData\" +\n \" SET deleted=1\" +\n \" WHERE\" +\" topic='\" + msg.req.params.topic + \"'\" +\n \" AND (\" + msg.req.authFilter + \")\" +\n \" AND id=\" + msg.req.params.id + \";\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 360,
+        "wires": [
+            [
+                "037e24e71f0d3d0f"
+            ]
+        ]
+    },
+    {
+        "id": "037e24e71f0d3d0f",
+        "type": "mysql",
+        "z": "a074fd7bc25fbae4",
+        "mydb": "a637cc34049dd28f",
+        "name": "",
+        "x": 780,
+        "y": 420,
+        "wires": [
+            [
+                "0df561bf63573794"
+            ]
+        ]
+    },
+    {
+        "id": "0df561bf63573794",
+        "type": "function",
+        "z": "a074fd7bc25fbae4",
+        "name": "Response",
+        "func": "msg.payload = {\n \"found\": msg.payload.affectedRows,\n \"changed\": msg.payload.changedRows,\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 960,
+        "y": 420,
+        "wires": [
+            [
+                "f8bf34bfe021fb76"
+            ]
+        ]
+    },
+    {
+        "id": "f8bf34bfe021fb76",
+        "type": "http response",
+        "z": "a074fd7bc25fbae4",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1110,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "4d09cc45cf46f4a0",
+        "type": "http in",
+        "z": "a074fd7bc25fbae4",
+        "name": "",
+        "url": "/delete/:topic",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 250,
+        "y": 420,
+        "wires": [
+            [
+                "37ad98cbbca6a218"
+            ]
+        ]
+    },
+    {
+        "id": "37ad98cbbca6a218",
+        "type": "function",
+        "z": "a074fd7bc25fbae4",
+        "name": "Delete_Topic",
+        "func": "// if no authentication filter defined or available\n// set the default value as 1\nif(!msg.req.authFilter)\n msg.req.authFilter = 1;\nmsg.topic = \"UPDATE thingData\" +\n \" SET deleted=1 \" +\n \" WHERE\" +\n \" topic='\" + msg.req.params.topic + \"'\" +\n \" AND (\" + msg.req.authFilter + \");\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 420,
+        "wires": [
+            [
+                "037e24e71f0d3d0f"
+            ]
+        ]
+    },
+    {
+        "id": "3613a3bc0d8d37e8",
+        "type": "http in",
+        "z": "a074fd7bc25fbae4",
+        "name": "",
+        "url": "/delete/:topic/last/:count",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 280,
+        "y": 480,
+        "wires": [
+            [
+                "370ed4ab2e7947c6"
+            ]
+        ]
+    },
+    {
+        "id": "25fcfd4c7cda0ee7",
+        "type": "http in",
+        "z": "a074fd7bc25fbae4",
+        "name": "",
+        "url": "/delete/:topic/first/:count",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 280,
+        "y": 540,
+        "wires": [
+            [
+                "c756e8626d8b120d"
+            ]
+        ]
+    },
+    {
+        "id": "370ed4ab2e7947c6",
+        "type": "function",
+        "z": "a074fd7bc25fbae4",
+        "name": "Delete_last",
+        "func": "// if required record count is not specified\n// set default to 1\nif(!msg.req.params.count)\n msg.req.params.count = 1;\n// if no authentication filter defined or available\n// set the default value as 1\nif(!msg.req.authFilter)\n msg.req.authFilter = 1;\n\nmsg.topic = \"DELETE FROM thingData\" +\n \" WHERE deleted=1\" +\n \" AND\" +\n \" topic='\" + msg.req.params.topic + \"'\" +\n \" AND (\" + msg.req.authFilter + \")\" +\n \" ORDER BY id DESC LIMIT \" + msg.req.params.count +\n\";\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 480,
+        "wires": [
+            [
+                "037e24e71f0d3d0f"
+            ]
+        ]
+    },
+    {
+        "id": "c756e8626d8b120d",
+        "type": "function",
+        "z": "a074fd7bc25fbae4",
+        "name": "Delete_first",
+        "func": "// if required record count is not specified\n// set default to 1\nif(!msg.req.params.count)\n msg.req.params.count = 1;\n// if no authentication filter defined or available\n// set the default value as 1\nif(!msg.req.authFilter)\n msg.req.authFilter = 1;\n\nmsg.topic = \"DELETE FROM thingData\" +\n \" WHERE deleted=1\" +\n \" AND\" +\n \" topic='\" + msg.req.params.topic + \"'\" +\n \" AND (\" + msg.req.authFilter + \")\" +\n \" ORDER BY id ASC LIMIT \" + msg.req.params.count +\n\";\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 540,
+        "wires": [
+            [
+                "037e24e71f0d3d0f"
+            ]
+        ]
+    },
+    {
+        "id": "a637cc34049dd28f",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "iot_practice_mysql_1",
+        "port": "3306",
+        "db": "tSeriesDB",
+        "tz": "",
+        "charset": "UTF8"
+    }
+]

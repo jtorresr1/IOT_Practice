@@ -1,0 +1,172 @@
+[
+    {
+        "id": "62f16fef05220aca",
+        "type": "tab",
+        "label": "Time-Based Filters",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "24ece895a5c33091",
+        "type": "http in",
+        "z": "62f16fef05220aca",
+        "name": "",
+        "url": "/get/:topic/after/:time/last/:count",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 260,
+        "y": 260,
+        "wires": [
+            [
+                "b12e7d265634db81"
+            ]
+        ]
+    },
+    {
+        "id": "b12e7d265634db81",
+        "type": "function",
+        "z": "62f16fef05220aca",
+        "name": "After_Query",
+        "func": "// if no authentication filter defined or available\n// set the default value as 1\nif(!msg.req.authFilter)\n msg.req.authFilter = 1;\n// wildcard used for API query is * and this needs to be converted into SQL wildcard character %\nmsg.topic = \"SELECT id,topic,payload,timestamp\" +\n \" FROM thingData WHERE\" +\n \" topic LIKE '\" + msg.req.params.topic.\nreplace(/\\*/g, \"%\") + \"'\" +\n \" AND\" +\n \" timestamp >= '\" + msg.req.params.time + \"'\" +\n \" AND deleted=0\" +\n \" AND (\" + msg.req.authFilter + \")\" +\n \" ORDER BY ID DESC\" +\n \" LIMIT \" + msg.req.params.count + \";\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 260,
+        "wires": [
+            [
+                "610a25cfb60dfcef"
+            ]
+        ]
+    },
+    {
+        "id": "610a25cfb60dfcef",
+        "type": "mysql",
+        "z": "62f16fef05220aca",
+        "mydb": "a637cc34049dd28f",
+        "name": "",
+        "x": 760,
+        "y": 320,
+        "wires": [
+            [
+                "b89c9676d1b544fc"
+            ]
+        ]
+    },
+    {
+        "id": "b89c9676d1b544fc",
+        "type": "function",
+        "z": "62f16fef05220aca",
+        "name": "Response",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 920,
+        "y": 320,
+        "wires": [
+            [
+                "d77096c472260c93"
+            ]
+        ]
+    },
+    {
+        "id": "d77096c472260c93",
+        "type": "http response",
+        "z": "62f16fef05220aca",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1070,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "28c290404955e24e",
+        "type": "http in",
+        "z": "62f16fef05220aca",
+        "name": "",
+        "url": "/get/:topic/before/:time/last/:count",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 250,
+        "y": 320,
+        "wires": [
+            [
+                "0867a5027f4fd0f8"
+            ]
+        ]
+    },
+    {
+        "id": "53a70c52fc216044",
+        "type": "http in",
+        "z": "62f16fef05220aca",
+        "name": "",
+        "url": "/get/:topic/during/:start/:end/last/:count",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 240,
+        "y": 380,
+        "wires": [
+            [
+                "bbef262190c8e5fb"
+            ]
+        ]
+    },
+    {
+        "id": "0867a5027f4fd0f8",
+        "type": "function",
+        "z": "62f16fef05220aca",
+        "name": "Before_Query",
+        "func": "// if no authentication filter defined or available\n// set the default value as 1\nif(!msg.req.authFilter)\n msg.req.authFilter = 1;\n// wildcard used for API query is * and this needs to be converted into SQL wildcard character %\nmsg.topic = \"SELECT id,topic,payload,timestamp\" +\n \" FROM thingData WHERE\" +\n \" topic LIKE '\" + msg.req.params.topic.\nreplace(/\\*/g, \"%\") + \"'\" +\n \" AND\" +\n \" timestamp <= '\" + msg.req.params.time + \"'\" +\n \" AND deleted=0\" +\n \" AND (\" + msg.req.authFilter + \")\" +\n \" ORDER BY ID DESC\" +\n \" LIMIT \" + msg.req.params.count + \";\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 320,
+        "wires": [
+            [
+                "610a25cfb60dfcef"
+            ]
+        ]
+    },
+    {
+        "id": "bbef262190c8e5fb",
+        "type": "function",
+        "z": "62f16fef05220aca",
+        "name": "During_Query",
+        "func": "// if no authentication filter defined or available\n// set the default value as 1\nif(!msg.req.authFilter)\n msg.req.authFilter = 1;\n// wildcard used for API query is * and this needs to be converted into SQL wildcard character %\nmsg.topic = \"SELECT id,topic,payload,timestamp\" +\n \" FROM thingData WHERE\" +\n \" topic LIKE '\" + msg.req.params.topic.\nreplace(/\\*/g, \"%\") + \"'\" +\n \" AND\" + \" timestamp >= '\" + msg.req.params.start + \"'\" +\n \" AND\" +\n \" timestamp <='\" + msg.req.params.end + \"'\" +\n \" AND deleted=0\" +\n \" AND (\" + msg.req.authFilter + \")\" +\n \" ORDER BY ID DESC\" +\n \" LIMIT \" + msg.req.params.count + \";\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 380,
+        "wires": [
+            [
+                "610a25cfb60dfcef"
+            ]
+        ]
+    },
+    {
+        "id": "a637cc34049dd28f",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "iot_practice_mysql_1",
+        "port": "3306",
+        "db": "tSeriesDB",
+        "tz": "",
+        "charset": "UTF8"
+    }
+]
