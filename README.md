@@ -48,7 +48,7 @@ Los flujos se encuentran en  formato JSON, en la carpeta [flows_Cap9](flows_Cap9
 Para la importación solo se hace click en el icono de opciones(esquina superior derecha), luego en **import**. Seguido se agrega el archivo json a importar y se hace selección de nuevo diagrama. Este proceso se repite para los demas archivos json.
 
 ## Testing
-* Para la prueba de [1_MQTT_Publish_Capability.json](flujos_red_node/1_MQTT_Publish_Capability.json), se usa la siguiente estructura de comando:
+* Para la prueba de [Data_access_API.json](flows_Cap9/Data_access_API.json), se usa la siguiente estructura de comando:
 
   ```bash
   curl -X GET "http://localhost:1880/get/topicLike/my*/payloadLike/*/last/5"
