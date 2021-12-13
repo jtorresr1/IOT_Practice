@@ -15,6 +15,11 @@ Los servicios a utilizarse se configurarón en un archivo [docker](docker-compos
 | mysql| latest|
 | phpmyadmin| latest|
 
+Para la creación de la red (indicada en el archivo [docker](docker-compose.yml)) se utilizado el comando:
+```bash
+docker network create red_local1
+```
+
 Luego se ejecuta el siguiente comando para la instalación y el levantamiento de los servicios:
 ```bash
 docker-compose up
