@@ -1,5 +1,5 @@
 # Practica de Internet de las Cosas
-En este proyecto se instalará y configurará lo propuesto en el Capítulo 7 *Building the Critical Components* del libro **Build Your Own IoT Platform**.
+En este proyecto se instalará y configurará lo propuesto en el Capítulo 9 *Creating a REST Interface* del libro **Build Your Own IoT Platform**.
 ## Requerimientos
 - Docker versión <= 19
 - Docker Compose versión <= 1.28
