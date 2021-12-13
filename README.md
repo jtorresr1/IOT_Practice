@@ -60,12 +60,17 @@ Para la importación solo se hace click en el icono de opciones(esquina superior
   Donde devolveria los últimos 5 registros del tópico *timestamp*
   ```[{"id":22,"topic":"timestamp","payload":"1639353664853","timestamp":"1639353664.855"},{"id":21,"topic":"timestamp","payload":"1639353649841","timestamp":"1639353649.843"},{"id":20,"topic":"timestamp","payload":"1639353634841","timestamp":"1639353634.843"},{"id":19,"topic":"timestamp","payload":"1639353619829","timestamp":"1639353619.832"},{"id":18,"topic":"timestamp","payload":"1639353604821","timestamp":"1639353604.824"}] ```
   
-* Para la prueba de [Time_Based_Filters.json](flows_Cap9/Time_Based_Filters.json) se usa la siguiente estructura de comando:
+* Para la prueba de [Time_Based_Filters.json](flows_Cap9/Time_Based_Filters.json) se puede consultar de tres maneras distintas:
 
   ```bash
-  curl -X POST "localhost:1880/pub/'nombre_del_topico'/'nombre_del_metodo_payload'" -i
+  curl -X GET "http://localhost:1880/get/mytopic/before/1543717154.899/last/5"
+  curl -X GET "http://localhost:1880/get/mytopic/after/1543717154.899/last/5"
+  curl -X GET "http://localhost:1880/get/mytopic/during/1543717154.899/154371790/last/5"
   ```
-
+  Donde el primer comando es para consultar por los últimos 5 registros que tengan un *timestamp* menor a *1543717154.899*.
+  El segundo comando es para consultar por los últimos 5 registros que tengan un *timestamp* mayor a *1543717154.899*.
+  Por último, el tercer comando es para consultar por los últimos 5 registros que tengan un *timestamp* entre *1543717154.899* y *154371790*.
+  
   El cual retorna un mensaje de la siguiente forma:
   ```{"success":true,"message":"published myTopic/myPayload"} ```
 
