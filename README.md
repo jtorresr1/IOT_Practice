@@ -100,25 +100,30 @@ Para la importación solo se hace click en el icono de opciones(esquina superior
   ```
   Devolviendo:
   ```{"found":1,"changed":1}```
-  Indicando que fue encontrado y modificado. Esto puede ser apreciado si se vuelve a consultar por la existencia de este registro (no aparecerá) mediante comandos curl, pero si se podrá visualizar el registro desde la [BD](base_de_datos/tSeriesDB.sql).
+  Indicando que fue encontrado y modificado. Esto puede ser apreciado si se vuelve a consultar por la existencia de este registro (no aparecerá) mediante comandos *curl*, pero si se podrá visualizar el registro desde la [BD](base_de_datos/tSeriesDB.sql).
 
-* Para las prueba de [Removing_data_records.json](flows_Cap9/Removing_data_records.json) se usa los siguiente comando:
+* Para las prueba de [Removing_data_records.json](flows_Cap9/Removing_data_records.json) se puede trabajar de cuatro maneras distintas:
 
-    1. Se usa para la extracción del ultimo elemento insertado en la base de datos dependiendo del tópico solicitado.
-
-    ```bash
-      curl -X GET "localhost:1880/get/myTopic" -i   #extrae el ultimo elemento insertado del tópico mytopic
-    ```
-
-    Oteniendo ```[{"id":8,"topic":"myTopic","payload":"myPayload","timestamp":"1543717154.899"}]```
-
-    2. Se usa para la extracción de 1 o mas elementos insertados en la base de datos dependiendo del tópico solicitado.
-
-    ```bash
-      curl -X GET "https://www.in24hrs.xyz:1880/get/myTopic/last/3"  #extrae los 3 ultimos elementos insertados del tópico mytopic
-    ```
-    Obteniendo ```[{"id":8,"topic":"myTopic","payload":"myPayload", "timestamp":"1543717154.899"}, {"id":7,"topic":"myTopic","payload":"myPayload",
-    "timestamp":"1543716966.189"}, {"id":6,"topic":"myTopic","payload":"myPayload", "timestamp":"1543717132.192"}] ```
+  ```bash
+    curl -X GET "http://127.0.0.1:1880/purge/mytopic/id/22"
+    curl -X GET "http://127.0.0.1:1880/purge/mytopic"
+    curl -X GET "http://127.0.0.1:1880/purge/mytopic/last/5"
+    curl -X GET "http://127.0.0.1:1880/purge/mytopic/first/5"
+  ```
+  
+  Donde:
+    - El primer comando elimina el registro con id *22* y que este en el tópico indicado.
+    - El segundo comando elimina todos los registros del tópico indicado.
+    - El tercer comando elimina los últimos 5 registros del tópico indicado.
+    - Por último, el cuarto comando elimina los primeros 5 registros del tópico indicado.
+  
+   Un ejemplo utilizado la [BD](base_de_datos/tSeriesDB.sql) sería:
+  ```bash
+  curl -X GET "http://127.0.0.1:1880/purge/timestamp/id/19"
+  ```
+  Devolviendo:
+  ```{"found":1,"changed":0}```
+  Indicando que fue encontrado. A diferencia del comando con *delete*, ahora ya no aparece ni en la [BD](base_de_datos/tSeriesDB.sql) debido a que eliminado.
 
 ## Integrantes
 
