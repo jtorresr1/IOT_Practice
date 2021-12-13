@@ -88,11 +88,11 @@ Para la importación solo se hace click en el icono de opciones(esquina superior
     curl -X GET "http://127.0.0.1:1880/delete/mytopic/first/5"
   ```
   
- Donde:
-  - El primer comando es para cambiar el estado a *deleted = 1* en el registro con id *22* y que este en el tópico indicado.
-  - El segundo comando es para cambiar el estado a *deleted = 1* a todos los registros del tópico indicado.
-  - El tercer comando es para cambiar el estado a *deleted = 1* de los últimos 5 registros del tópico indicado.
-  - Por último, el cuarto comando es para cambiar el estado a *deleted = 1* de los primeros 5 registros del tópico indicado.
+  Donde:
+    - El primer comando es para cambiar el estado a *deleted = 1* en el registro con id *22* y que este en el tópico indicado.
+    - El segundo comando es para cambiar el estado a *deleted = 1* a todos los registros del tópico indicado.
+    - El tercer comando es para cambiar el estado a *deleted = 1* de los últimos 5 registros del tópico indicado.
+    - Por último, el cuarto comando es para cambiar el estado a *deleted = 1* de los primeros 5 registros del tópico indicado.
   
    Un ejemplo utilizado la [BD](base_de_datos/tSeriesDB.sql) sería:
   ```bash
