@@ -67,9 +67,10 @@ Para la importación solo se hace click en el icono de opciones(esquina superior
   curl -X GET "http://localhost:1880/get/mytopic/after/1543717154.899/last/5"
   curl -X GET "http://localhost:1880/get/mytopic/during/1543717154.899/154371790/last/5"
   ```
-  Donde el primer comando es para consultar por los últimos 5 registros que tengan un *timestamp* menor a *1543717154.899*.
-  El segundo comando es para consultar por los últimos 5 registros que tengan un *timestamp* mayor a *1543717154.899*.
-  Por último, el tercer comando es para consultar por los últimos 5 registros que tengan un *timestamp* entre *1543717154.899* y *154371790*.
+  Donde:
+    - El primer comando es para consultar por los últimos 5 registros que tengan un *timestamp* menor a *1543717154.899*.
+    - El segundo comando es para consultar por los últimos 5 registros que tengan un *timestamp* mayor a *1543717154.899*.
+    - Por último, el tercer comando es para consultar por los últimos 5 registros que tengan un *timestamp* entre *1543717154.899* y *154371790*.
   
   El cual retorna un mensaje de la siguiente forma:
   ```{"success":true,"message":"published myTopic/myPayload"} ```
