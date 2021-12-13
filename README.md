@@ -53,14 +53,14 @@ Para la importación solo se hace click en el icono de opciones(esquina superior
   ```bash
   curl -X GET "http://localhost:1880/get/topicLike/my*/payloadLike/*/last/5"
   ```
-  Un ejemplo de este comando con la BD(base_de_datos/tSeriesDB.sql) sería:
+  Un ejemplo de este comando con la [BD](base_de_datos/tSeriesDB.sql) sería:
   ```bash
   curl -X GET "http://127.0.0.1:1880/get/topicLike/timestamp/payloadLike/*/last/5"
   ```
   Donde devolveria los últimos 5 registros del tópico *timestamp*
   ```[{"id":22,"topic":"timestamp","payload":"1639353664853","timestamp":"1639353664.855"},{"id":21,"topic":"timestamp","payload":"1639353649841","timestamp":"1639353649.843"},{"id":20,"topic":"timestamp","payload":"1639353634841","timestamp":"1639353634.843"},{"id":19,"topic":"timestamp","payload":"1639353619829","timestamp":"1639353619.832"},{"id":18,"topic":"timestamp","payload":"1639353604821","timestamp":"1639353604.824"}] ```
   
-* Para la prueba de [2_REST_API_Message_Publisher.json](flujos_red_node/2_REST_API_Message_Publisher.json) se usa la siguiente estructura de comando:
+* Para la prueba de [Time_Based_Filters.json](flows_Cap9/Time_Based_Filters.json) se usa la siguiente estructura de comando:
 
   ```bash
   curl -X POST "localhost:1880/pub/'nombre_del_topico'/'nombre_del_metodo_payload'" -i
@@ -69,14 +69,14 @@ Para la importación solo se hace click en el icono de opciones(esquina superior
   El cual retorna un mensaje de la siguiente forma:
   ```{"success":true,"message":"published myTopic/myPayload"} ```
 
-* Para la prueba de [3_Database_Listener.json](flujos_red_node/3_Database_Listener.json) se hace uso del siguiente comando de mosquitto:
+* Para la prueba de [Data_deletion_APIS.json](flows_Cap9/Data_deletion_APIS.json) se hace uso del siguiente comando de mosquitto:
 
   ```bash
     mosquitto_pub -h localhost -t topicoRedNode -m "Hola Mundo"
   ```
   Insertando el mensaje junto con el tópico en la base de datos.
 
-* Para las prueba de [4_REST_API_Message_Retriever.json](flujos_red_node/4_REST_API_Message_Retriever.json) se usa los siguiente comando:
+* Para las prueba de [Removing_data_records.json](flows_Cap9/Removing_data_records.json) se usa los siguiente comando:
 
     1. Se usa para la extracción del ultimo elemento insertado en la base de datos dependiendo del tópico solicitado.
 
