@@ -1,7 +1,8 @@
 # Practica de Internet de las Cosas
 En este proyecto se instalará y configurará lo propuesto en el Capítulo 7 *Building the Critical Components* del libro **Build Your Own IoT Platform**.
 ## Requerimientos
-- Docker
+- Docker versión <= 19
+- Docker Compose versión <= 1.28
 
 ## Instalación
 
@@ -30,7 +31,7 @@ En el caso de la importación de la base de datos se procede a hacer lo siguient
 
 En el siguiente [enlace](https://help.wnpower.com/hc/es/articles/360043459551-Importar-tu-base-de-datos-MySQL-desde-un-archivo-SQL-en-phpMyAdmin) se encuentra este proceso con imagenes de referencia.
 
-Además para acceder a la base de datos de series de tiempo, se crea un usuario especial y se le asigno una contraseña.
+Además para acceder a la base de datos, se crea un usuario especial y se le asigno una contraseña.
 
 ## Instalación de nodos requeridos en Node-RED
 
