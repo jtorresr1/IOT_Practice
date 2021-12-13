@@ -48,8 +48,18 @@ Los flujos se encuentran en  formato JSON, en la carpeta [flows_Cap9](flows_Cap9
 Para la importación solo se hace click en el icono de opciones(esquina superior derecha), luego en **import**. Seguido se agrega el archivo json a importar y se hace selección de nuevo diagrama. Este proceso se repite para los demas archivos json.
 
 ## Testing
-* Para la prueba de [1_MQTT_Publish_Capability.json](flujos_red_node/1_MQTT_Publish_Capability.json), se puede observar los datos de salida en el debug del red node.
+* Para la prueba de [1_MQTT_Publish_Capability.json](flujos_red_node/1_MQTT_Publish_Capability.json), se usa la siguiente estructura de comando:
 
+  ```bash
+  curl -X GET "http://localhost:1880/get/topicLike/my*/payloadLike/*/last/5"
+  ```
+  Un ejemplo de este comando con la BD(base_de_datos/tSeriesDB.sql) sería:
+  ```bash
+  curl -X GET "http://127.0.0.1:1880/get/topicLike/timestamp/payloadLike/*/last/5"
+  ```
+  Donde devolveria los últimos 5 registros del tópico *timestamp*
+  ```[{"id":22,"topic":"timestamp","payload":"1639353664853","timestamp":"1639353664.855"},{"id":21,"topic":"timestamp","payload":"1639353649841","timestamp":"1639353649.843"},{"id":20,"topic":"timestamp","payload":"1639353634841","timestamp":"1639353634.843"},{"id":19,"topic":"timestamp","payload":"1639353619829","timestamp":"1639353619.832"},{"id":18,"topic":"timestamp","payload":"1639353604821","timestamp":"1639353604.824"}] ```
+  
 * Para la prueba de [2_REST_API_Message_Publisher.json](flujos_red_node/2_REST_API_Message_Publisher.json) se usa la siguiente estructura de comando:
 
   ```bash
