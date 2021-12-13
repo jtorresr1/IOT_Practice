@@ -72,8 +72,12 @@ Para la importación solo se hace click en el icono de opciones(esquina superior
     - El segundo comando es para consultar por los últimos 5 registros que tengan un *timestamp* mayor a *1543717154.899*.
     - Por último, el tercer comando es para consultar por los últimos 5 registros que tengan un *timestamp* entre *1543717154.899* y *154371790*.
   
-  El cual retorna un mensaje de la siguiente forma:
-  ```{"success":true,"message":"published myTopic/myPayload"} ```
+   Un ejemplo de este comando con la [BD](base_de_datos/tSeriesDB.sql) sería:
+  ```bash
+  curl -X GET "http://127.0.0.1:1880/get/timestamp/before/1639354715/last/5"
+  ```
+  Donde devolveria los últimos 5 registros del tópico *timestamp*
+  ```[{"id":22,"topic":"timestamp","payload":"1639353664853","timestamp":"1639353664.855"},{"id":21,"topic":"timestamp","payload":"1639353649841","timestamp":"1639353649.843"},{"id":20,"topic":"timestamp","payload":"1639353634841","timestamp":"1639353634.843"},{"id":19,"topic":"timestamp","payload":"1639353619829","timestamp":"1639353619.832"},{"id":18,"topic":"timestamp","payload":"1639353604821","timestamp":"1639353604.824"}]````
 
 * Para la prueba de [Data_deletion_APIS.json](flows_Cap9/Data_deletion_APIS.json) se hace uso del siguiente comando de mosquitto:
 
