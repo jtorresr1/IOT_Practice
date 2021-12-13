@@ -87,7 +87,19 @@ Para la importación solo se hace click en el icono de opciones(esquina superior
     curl -X GET "http://127.0.0.1:1880/delete/mytopic/last/5"
     curl -X GET "http://127.0.0.1:1880/delete/mytopic/first/5"
   ```
-  Insertando el mensaje junto con el tópico en la base de datos.
+  
+ Donde:
+    - El primer comando es para cambiar el estado a *deleted = 1* en el registro con id *22* y que este en el tópico indicado.
+    - El segundo comando es para cambiar el estado a *deleted = 1* a todos los registros del tópico indicado.
+    - El tercer comando es para cambiar el estado a *deleted = 1* de los últimos 5 registros del tópico indicado.
+    - Por último, el cuarto comando es para cambiar el estado a *deleted = 1* de los primeros 5 registros del tópico indicado.
+  
+   Un ejemplo de este comando con la [BD](base_de_datos/tSeriesDB.sql) sería:
+  ```bash
+  curl -X GET "http://127.0.0.1:1880/get/timestamp/before/1639354715/last/5"
+  ```
+  Devolviendo:
+  ```[{"id":22,"topic":"timestamp","payload":"1639353664853","timestamp":"1639353664.855"},{"id":21,"topic":"timestamp","payload":"1639353649841","timestamp":"1639353649.843"},{"id":20,"topic":"timestamp","payload":"1639353634841","timestamp":"1639353634.843"},{"id":19,"topic":"timestamp","payload":"1639353619829","timestamp":"1639353619.832"},{"id":18,"topic":"timestamp","payload":"1639353604821","timestamp":"1639353604.824"}]```
 
 * Para las prueba de [Removing_data_records.json](flows_Cap9/Removing_data_records.json) se usa los siguiente comando:
 
@@ -109,8 +121,6 @@ Para la importación solo se hace click en el icono de opciones(esquina superior
 
 ## Integrantes
 
-- Céspedes Fuentes, Renato
 - Hermoza Loayza, Miguel
 - Torres Rodríguez, Jaime
-- Vicente Castro, Renzo
 
