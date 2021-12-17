@@ -6,7 +6,7 @@ En este proyecto se instalará y configurará lo propuesto en el Capítulo 9 *Cr
 
 ## Instalación
 
-Los servicios a utilizarse se configurarón en un archivo [docker](docker-compose.yml), donde contiene:
+Los servicios a utilizarse se configurarón en un archivo [docker](docker-compose.yml), donde:
 
 | SERVICIO| VERSIÓN|
 | ----- | ---- |
